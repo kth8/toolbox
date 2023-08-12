@@ -1,0 +1,6 @@
+---
+- name: Download magic-wormhole binary
+  ansible.builtin.get_url:
+    url: "https://github.com/magic-wormhole/magic-wormhole.rs/releases/latest/download/wormhole-rs"
+    dest: "/usr/local/bin"
+    mode: '0755'

@@ -1,0 +1,13 @@
+---
+- name: Download host-spawn binary
+  ansible.builtin.get_url:
+    url: "https://github.com/1player/host-spawn/releases/latest/download/host-spawn-x86_64"
+    dest: "/usr/local/bin/host-spawn"
+    mode: '0755'
+
+- name: Create host-spawn symlinks
+  ansible.builtin.file:
+    src: "/usr/local/bin/host-spawn"
+    dest: "/usr/local/bin/{{ item }}"
+    state: link
+  with_items: "{{ spawn_symlinks }}"

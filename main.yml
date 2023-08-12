@@ -1,0 +1,33 @@
+---
+- name: toolbox
+  hosts: localhost
+  connection: local
+  become: true
+  gather_facts: false
+  vars_files:
+    - config.yml
+
+  tasks:
+    - name: Install dnf packages
+      ansible.builtin.import_tasks: tasks/dnf.yml
+      tags: dnf
+
+    - name: Install tgpt
+      ansible.builtin.import_tasks: tasks/tgpt.yml
+      tags: tgpt
+
+    - name: Install amdgpu_top
+      ansible.builtin.import_tasks: tasks/amdgpu_top.yml
+      tags: amdgpu
+
+    - name: Install lesspass
+      ansible.builtin.import_tasks: tasks/lesspass.yml
+      tags: lesspass
+
+    - name: Install magic-wormhole
+      ansible.builtin.import_tasks: tasks/magic-wormhole.yml
+      tags: wormhole
+
+    - name: Install host-spawn
+      ansible.builtin.import_tasks: tasks/host-spawn.yml
+      tags: spawn

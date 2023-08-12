@@ -1,0 +1,18 @@
+---
+- name: Get tgpt hashes
+  ansible.builtin.get_url:
+    url: https://github.com/aandrew-me/tgpt/releases/latest/download/hashes.txt
+    dest: "/tmp/hashes.txt"
+
+- name: Find tgpt amd64 checksum
+  ansible.builtin.command:
+    cmd: grep tgpt-linux-amd64 /tmp/hashes.txt
+  changed_when: false
+  register: checksum
+
+- name: Download tgpt binary
+  ansible.builtin.get_url:
+    url: https://github.com/aandrew-me/tgpt/releases/latest/download/tgpt-linux-amd64
+    dest: "/usr/local/bin/tgpt"
+    mode: '0755'
+    checksum: sha256:"{{ checksum.stdout.split()[0] }}"

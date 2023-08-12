@@ -1,0 +1,42 @@
+---
+sys_utils:
+  - htop
+  - java-latest-openjdk-headless
+  - jq
+  - just
+  - lm_sensors
+  - pass-otp
+  - podman-compose
+  - skopeo
+  - tasksh
+  - tmux
+  - vim-enhanced
+  - wl-clipboard
+
+file_utils:
+  - cryfs
+  - file  
+  - ncdu
+  - restic
+  - the_silver_searcher
+  - trash-cli
+  - yt-dlp
+
+network_utils:
+  - bind-utils
+  - etcd
+  - golang-github-cloudflare-cfssl
+  - httpd-tools
+  - iperf3
+  - mosh
+  - nmap
+  - openssl
+  - socat
+  - speedtest-cli
+
+spawn_symlinks:
+  - firewall-cmd
+  - flatpak
+  - nmcli
+  - rpm-ostree
+  - xdg-open

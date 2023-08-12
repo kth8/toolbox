@@ -1,0 +1,43 @@
+---
+- name: Remove fedora-repos-modular
+  ansible.builtin.dnf:
+    name: "fedora-repos-modular"
+    state: absent
+
+- name: Add configuration options to dnf.conf
+  ansible.builtin.lineinfile:
+    path: "/etc/dnf/dnf.conf"
+    regexp: "^{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+  - regexp: max_parallel_downloads
+    line: max_parallel_downloads=20
+  - regexp: fastestmirror
+    line: fastestmirror=True
+  - regexp: defaultyes
+    line: defaultyes=True
+  - regexp: keepcache
+    line: keepcache=True
+  - regexp: deltarpm
+    line: deltarpm=True
+
+- name: Install dnf system utilities
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+    install_weak_deps: false
+    state: present
+  with_items: "{{ sys_utils }}"
+  
+- name: Install dnf file utilities
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+    install_weak_deps: false
+    state: present
+  with_items: "{{ file_utils }}"
+  
+- name: Install dnf network utilities
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+    install_weak_deps: false
+    state: present
+  with_items: "{{ network_utils }}"

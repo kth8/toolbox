@@ -1,0 +1,27 @@
+---
+- name: Get lesspass latest release
+  ansible.builtin.uri:
+    url: "https://api.github.com/repos/71/lesspass.rs/releases/latest"
+    return_content: true
+  register: lesspass
+
+- name: Get {{ lesspass.json.assets[7].name }}
+  ansible.builtin.uri:
+    url: "{{ lesspass.json.assets[7].browser_download_url }}"
+    return_content: true
+  register: checksum
+
+- name: Download {{ lesspass.json.assets[6].name }}
+  ansible.builtin.get_url:
+    url: "{{ lesspass.json.assets[6].browser_download_url }}"
+    dest: "/tmp/{{ lesspass.json.assets[6].name }}"
+    checksum: "sha256:{{ checksum.content.split()[0] }}"
+    
+- name: Unarchive {{ lesspass.json.assets[6].name }}
+  ansible.builtin.unarchive:
+    src: "/tmp/{{ lesspass.json.assets[6].name }}"
+    dest: "/usr/local/bin"
+    remote_src: yes
+    owner: root
+    group: root
+    extra_opts: [--strip-components=1]

@@ -1,0 +1,12 @@
+---
+- name: Get amdgpu_top latest release
+  ansible.builtin.uri:
+    url: "https://api.github.com/repos/Umio-Yasuno/amdgpu_top/releases/latest"
+    return_content: true
+  register: amdgpu
+
+- name: Installing {{ amdgpu.json.assets[1].name}}
+  ansible.builtin.dnf:
+    name: "{{ amdgpu.json.assets[1].browser_download_url}}"
+    disable_gpg_check: true
+    state: present
