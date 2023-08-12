@@ -5,8 +5,8 @@
     return_content: true
   register: amdgpu
 
-- name: Installing {{ amdgpu.json.assets[1].name}}
+- name: Installing {{ amdgpu.json.assets[1].name }}
   ansible.builtin.dnf:
-    name: "{{ amdgpu.json.assets[1].browser_download_url}}"
+    name: "{{ amdgpu.json.assets[1].browser_download_url }}"
     disable_gpg_check: true
     state: present
