@@ -6,7 +6,6 @@ sys_utils:
   - just
   - lm_sensors
   - pass-otp
-  - podman-compose
   - python3-bluez
   - skopeo
   - tasksh
@@ -41,5 +40,6 @@ spawn_symlinks:
   - flatpak
   - gsettings
   - nmcli
+  - podman
   - rpm-ostree
   - xdg-open
