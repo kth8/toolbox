@@ -39,6 +39,7 @@ spawn_symlinks:
   - bluetoothctl
   - firewall-cmd
   - flatpak
+  - gsettings
   - nmcli
   - rpm-ostree
   - xdg-open
