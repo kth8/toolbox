@@ -41,6 +41,7 @@ spawn_symlinks:
   - flatpak
   - gsettings
   - nmcli
+  - nvidia-smi
   - podman
   - rpm-ostree
   - xdg-open
