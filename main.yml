@@ -28,6 +28,10 @@
       ansible.builtin.import_tasks: tasks/magic-wormhole.yml
       tags: wormhole
 
+    - name: Install imgur.sh
+      ansible.builtin.import_tasks: tasks/imgur.yml
+      tags: imgur
+
     - name: Install host-spawn
       ansible.builtin.import_tasks: tasks/host-spawn.yml
       tags: spawn

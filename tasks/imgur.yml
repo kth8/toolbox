@@ -1,0 +1,6 @@
+---
+- name: Download imgur.sh
+  ansible.builtin.get_url:
+    url: "https://raw.githubusercontent.com/tremby/imgur.sh/main/imgur.sh"
+    dest: "/usr/local/bin/imgur.sh"
+    mode: '0755'

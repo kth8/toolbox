@@ -8,6 +8,8 @@ https://github.com/71/lesspass.rs
 
 https://github.com/magic-wormhole/magic-wormhole.rs
 
+https://github.com/tremby/imgur.sh
+
 https://github.com/1player/host-spawn
 
 Also create symlinks to host CLI utilities using `host-spawn`.
