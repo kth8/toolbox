@@ -42,6 +42,7 @@ spawn_symlinks:
   - gsettings
   - nmcli
   - nvidia-smi
+  - nvtop
   - podman
   - rpm-ostree
   - xdg-open
